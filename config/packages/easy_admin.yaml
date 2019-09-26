@@ -1,0 +1,15 @@
+easy_admin:
+   site_name: 'Sami <em style="font-size: 80%;">Blog</em>' 
+   user:
+        display_name: true
+        display_avatar: false
+   entities:
+        Article:
+            class: App\Entity\Article
+        Category:
+            class: App\Entity\Category
+        User:
+            class: App\Entity\User  
+        Comment:
+            class: App\Entity\Comment 
+      

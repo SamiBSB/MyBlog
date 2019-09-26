@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogController!{% endblock %}
+
+{% block body %}
+
+    <div class="metadata">
+<article>
+    
+<h1>{{ article.title }} </h1>
+
+<div class="metadata">
+    Ecrit le :{{ article.createdAt | date('d/m/y') }} a {{ article.createdAt | date('H:i') }} dans la categorie {{ article.category.title
+     }}
+</div>
+
+<div class="content">
+    
+<img src="{{ article.image }}" alt="">
+
+{{ article.content | raw}}
+
+<div class="center-block ">
+<a href="{{path('blog_edit',{'id':article.id})}}"><i class="fa fa-edit" style="font-size:36px;" ></i></a>
+
+<a href="{{path('blog_delete',{'id':article.id})}}"><i class="fa fa-trash" style="font-size:36px;color:red"></i></a>
+</div>
+<hr>
+<section id="commentaire">
+{% for comment in article.comments %}
+<div class="comment">
+<div class="row">
+<div class="col-3">
+{{comment.author}}(<small>{{comment.createdAt | date('d/m/y a H:i')}}</small>)
+</div>
+<div class="col-9">
+{{comment.content | raw}}
+</div>
+</div>
+</div>
+{% endfor %}
+</section>
+{% if  app.user %}
+<section id="comm">
+{{form_start(commentform)}}
+<div class="comm">
+<div class="row">
+    <div class="col-3">
+        {{form_row(commentform.author,{"attr": {"placeholder": "Nom de l'hauteur"}})}}
+    </div>
+    <div class="col-9">
+        {{form_row(commentform.content,{"attr": {"placeholder": "Message"}})}}
+    </div>
+    <hr>
+</div>
+
+</div>
+{{form_rest(commentform)}}
+<button type="submit" class="btn btn-primary">
+Ajouter commentaire
+</button>
+{{form_end(commentform)}}
+</section>
+{% else  %}
+<h3> <a class="nav-link" href="{{ path('security_login') }}">veuillez vous connecter avant de pouvoir laissez un commentaire</a></h3>
+{% endif  %}
+{% endblock %}

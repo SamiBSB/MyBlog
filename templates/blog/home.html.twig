@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+ {% block body %}
+<h1>Salut, Bienvenue {{ title }} dans mon Blog ! ✅</h1>
+
+{% if age > 18 %}
+
+<p>tu as {{ age }} ans : tu es majeur !</p>
+
+{% else %}
+
+<p>tu es mineur</p>
+
+{% endif %}
+
+<h2>Create your First Page in Symfony 4.3 version</h2>
+
+<ul>
+<li>Creating a Page: Route and Controller</li>
+<li>Annotation Routes</li>
+<li>Auto-Installing Recipes with Symfony Flex</li>
+<li>The bin/console Command</li>
+<li>The Web Debug Toolbar: Debugging Dream</li>
+<li>Rendering a Template</li>
+<li>Checking out the Project Structure</li>
+<li>What's Next?</li>
+<li>Go Deeper with HTTP & Framework Fundamentals</li>
+</ul>
+
+<p>Creating a new page - whether it's an HTML page or a JSON endpoint - is a two-step process:</p>
+
+<p>Create a route: A route is the URL (e.g. /about) to your page and points to a controller;</p>
+<p>Create a controller: A controller is the PHP function you write that builds the page. </p>
+<p>You take the incoming request information and use it to create a Symfony Response object, 
+which can hold HTML content, a JSON string or even a binary file like an image or PDF</p>
+{% endblock %}

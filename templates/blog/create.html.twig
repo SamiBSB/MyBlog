@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %} Blog{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <h1>Ajouter un nouvel article </h1>
+  </div>
+
+{{form_start(form)}}
+{{form_errors(form.title)}}
+<div class="row">
+  <div class="col-md-12">
+      {{form_row(form.title,{"attr": {"placeholder": "titre de l'article"}})}}
+  </div>
+  <div class="col-md-12">
+      {{form_row(form.category)}}
+  </div>
+  <div class="col-md-12">
+      {{form_row(form.content,{"attr": {"placeholder": "contenu  de l'article"}})}}
+  </div>
+  <div class="col-md-12">
+      {{form_row(form.image,{"attr": {"placeholder": "image de l'article"}})}}
+  </div>
+  
+</div>
+{{form_rest(form)}}
+<button type="submit" class="btn btn-primary">
+{% if editMode %}
+Enregistrer les modification
+{% else %}
+Ajouter l'article
+{% endif %}
+</button>
+{{form_end(form)}}
+
+</div>
+{% endblock %} 

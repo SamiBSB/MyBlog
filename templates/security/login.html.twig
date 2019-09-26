@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <h1>Connexion </h1>
+    </div>
+{% if error %}
+    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path('security_login') }}" method="post">
+     <div class="form-group">
+     <label for="username">Adresse email:</label>
+         <input placeholder="adresse email.." required name="_username"
+         type="text" class="form-control">
+     </div>
+     
+     <div class="form-group">
+     <label for="password">Mot de passe:</label>
+         <input placeholder="Mot de passe.." required name="_password"
+         type="password" class="form-control">
+     </div>
+
+     <div class="form-group">
+         <button
+         type="submit" class="btn btn-success">Connexion</button>
+     </div>
+     <input type="checkbox" id="remember_me" name="_remember_me" checked/>
+    <label for="remember_me">Rester connecté</label>
+</form>
+</div>
+{% endblock %} 

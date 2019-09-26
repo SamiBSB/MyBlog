@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogController!{% endblock %}
+
+{% block body %}
+<article>
+    {% if  app.user %}
+<h1>Salut {{ app.user.username }}! ✅</h1>
+{% endif %} 
+
+
+<div class="metadata">
+    Ecrit le : 13/09/2019
+</div>
+
+<div class="content">
+    <img src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+<p>
+What's Next?¶
+Congrats! You're already starting to master Symfony and learn a whole new way of building beautiful
+,functional, fast and maintainable applications.
+</p>
+<p>
+
+Every thing is gonna be allright already to night is coming to starting to master dinner and learn a whole new way of building beautiful
+, every game to do next season functional, fast and maintainable algeria will win applications tomorrow we will be happy .
+</p>
+</div>
+</article>
+
+
+{% for article in articles %}
+<article>
+    
+<h1>{{ article.title }}  ✅</h1>
+
+<div class="metadata">
+    Ecrit le :{{ article.createdAt | date('d/m/y') }} a {{ article.createdAt | date('H:i') }}
+</div>
+
+<div class="content">
+    
+<img src="{{ article.image }}" alt="">
+
+{{ article.content | raw}}
+
+<p>
+
+Every thing is gonna be allright already to night is coming to starting to master dinner and learn a whole new way of building beautiful
+, every game to do next season functional, fast and maintainable algeria will win applications tomorrow we will be happy .
+</p>
+<a href="{{ path('blog_show',{'id': article.id}) }}" class="btn btn-primary">lire la suite</a>
+</div>
+</article>
+<br>
+{% endfor %}
+
+{% endblock %}
